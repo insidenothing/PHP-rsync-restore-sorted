@@ -56,6 +56,7 @@ while($line < $passes){
 if (is_dir($path.'/'.$lines[$line])){ 
 $src = $path.'/'.$lines[$line].'/'; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line].'/';
+sleep(1);
 $command = 'rsync -avz --progress "'.$src.'" "'.prepSpaces($dest).'"';
 $type = "folder";
 }else{
