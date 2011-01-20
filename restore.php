@@ -1,4 +1,17 @@
 <?php
+function sec2hms($sec, $padHours = false){
+    $hms = "";
+    $hours = intval(intval($sec) / 3600); 
+    $hms .= ($padHours) 
+          ? str_pad($hours, 2, "0", STR_PAD_LEFT). ":"
+          : $hours. ":";
+    $minutes = intval(($sec / 60) % 60); 
+    $hms .= str_pad($minutes, 2, "0", STR_PAD_LEFT). ":";
+    $seconds = intval($sec % 60); 
+    $hms .= str_pad($seconds, 2, "0", STR_PAD_LEFT);
+    return $hms;
+  }
+
 function prepSpaces($str){
 $str = str_replace(' ','\ ',$str);
 return $str;
@@ -23,22 +36,18 @@ echo "Path to restore from: ";
 $handle = fopen ("php://stdin","r");
 $line = fgets($handle);
 $path = trim($line);
-
 echo "Remote server username: ";
 $handle = fopen ("php://stdin","r");
 $line = fgets($handle);
 $user = trim($line);
-
 echo "Remote Server Name or IP: ";
 $handle = fopen ("php://stdin","r");
 $line = fgets($handle);
 $server = trim($line);
-
 echo "Path to restore to: ";
 $handle = fopen ("php://stdin","r");
 $line = fgets($handle);
 $remote = trim($line);
-
 echo "sorting $path by $sort first\n";
 ob_start();
 $last_line = system('ls '.$path.' '.$switch, $retval);
@@ -47,7 +56,8 @@ echo "Loaded \n";
 $lines = explode("
 ", $buffer);
 $passes = count($lines);
-echo "Ready to process $passes in $path by $sort to $remote at $server by $user \n";
+
+echo "Ready to process $passes in $path by $sort to $remote at $server as $user, it will take ".sec2hms($passes)." \n";
 cliPause();
 echo "ARE YOU SURE YOU WANT TO START THE RSYNC NOW? \n";
 cliPause();
@@ -67,7 +77,8 @@ $type = "file";
 }
 echo "$type: $command \n\n";
 $output = system($command.' >> /logs/restore.progress.log &', $error);
-echo "\n\n";
+$remaining = $line-$spaces;
+echo "\n Time Remaining: ".sec2hms($remaining)." \n";
 $line++;
 }
 echo "Restore Complete \n";
