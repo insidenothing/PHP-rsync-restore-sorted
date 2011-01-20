@@ -1,0 +1,13 @@
+Event:
+0ver 50 GB of small files from over 3 years need to be restored FROM OFF SITE BACKUP.
+
+Problem:
+rsync does not offer sort. (and for good reasons, which I support) 
+
+Solution:
+1. sort method using ln "ln -t -l"
+2. write results to flat file
+3. open file with php 
+4. disable time limit in script and run php cli
+5. based on switches used on ln start at the top of the list and start rsync'ing files and folders
+6. use php's error_log to log restore for tail in other terminals
