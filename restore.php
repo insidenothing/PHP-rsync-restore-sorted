@@ -2,6 +2,7 @@
 function cliPause(){
 echo "Press enter to continue: ";
 $handle = fopen ("php://stdin","r");
+$null = fgets($handle);
 echo "\n";
 }
 echo "Path to sort and restore: ";
