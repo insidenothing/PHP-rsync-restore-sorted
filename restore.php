@@ -1,4 +1,8 @@
 <?php
+function prepSpaces($str){
+$str = str_replace(' ','\ ',$str);
+return $str;
+}
 function cliPause(){
 echo "Press enter to continue";
 $handle = fopen ("php://stdin","r");
@@ -52,22 +56,12 @@ while($line < $passes){
 if (is_dir($path.'/'.$lines[$line])){ 
 $src = $path.'/'.$lines[$line].'/'; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line].'/';
-
-
-echo "softlink to clean transfer string and clean destination: \n\n";
-
-
-$command = 'rsync -avz --progress \''.$src.'\' \''.$dest.'\'';
+$command = 'rsync -avz --progress "'.$src.'" "'.prepSpaces($dest).'"';
 $type = "folder";
 }else{
 $src = $path.'/'.$lines[$line]; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line];
-
-
-echo "softlink to clean transfer string and clean destination: \n\n";
-
-
-$command = 'rsync -avz \''.$src.'\' \''.$dest.'\'';
+$command = 'rsync -avz --progress "'.$src.'" "'.prepSpaces($dest).'"';
 $type = "file";
 }
 echo "$type: $command \n\n";
