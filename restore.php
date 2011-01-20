@@ -57,12 +57,14 @@ $type = "folder";
 }else{
 $src = $path.'/'.$lines[$line]; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line];
-$command = 'rsync -avz --progress \''.$src.'\' \''.$dest.'\'';
+$command = 'rsync -avz \''.$src.'\' \''.$dest.'\'';
 $type = "file";
 }
 echo "$type: $command \n\n";
-//$output = system($command, $error);
+$output = system($command, $error);
+echo "\n\n";
 $line++;
 }
+echo "Restore Complete \n";
 cliPause();
 ?>
