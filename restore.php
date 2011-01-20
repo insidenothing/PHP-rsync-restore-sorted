@@ -77,8 +77,9 @@ $type = "file";
 }
 echo "$type: $command \n\n";
 $output = system($command.' >> /logs/restore.progress.log &', $error);
-$remaining = $line-$spaces;
-echo "\n Time Remaining: ".sec2hms($remaining)." \n";
+$remaining = $passes - $line;
+echo "\n\n";
+echo "Time Remaining: ".sec2hms($remaining)." \n\n";
 $line++;
 }
 echo "Restore Complete \n";
