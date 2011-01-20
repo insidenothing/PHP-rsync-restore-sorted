@@ -14,3 +14,7 @@ Solution:
 
 Breakthroughs:
 using output buffering in php cli gave a vast ui speed improvement.
+
+Environment:
+Ok if your reading this you best be a developer, with that said this was made for linux with both php and rsync installed, apache is not required.
+For your sanity PLEASE set up ssh keys between host and remote so your not prompted for a password for each item.
