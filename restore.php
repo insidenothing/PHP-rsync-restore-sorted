@@ -65,7 +65,6 @@ $command = 'rsync -avz --progress "'.$src.'" "'.prepSpaces($dest).'"';
 $type = "file";
 }
 echo "$type: $command \n\n";
-sleep(1);
 $output = system($command, $error);
 echo "\n\n";
 $line++;
