@@ -52,16 +52,26 @@ while($line < $passes){
 if (is_dir($path.'/'.$lines[$line])){ 
 $src = $path.'/'.$lines[$line].'/'; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line].'/';
+
+
+echo "softlink to clean transfer string and clean destination: \n\n";
+
+
 $command = 'rsync -avz --progress \''.$src.'\' \''.$dest.'\'';
 $type = "folder";
 }else{
 $src = $path.'/'.$lines[$line]; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line];
+
+
+echo "softlink to clean transfer string and clean destination: \n\n";
+
+
 $command = 'rsync -avz \''.$src.'\' \''.$dest.'\'';
 $type = "file";
 }
 echo "$type: $command \n\n";
-$output = system($command, $error);
+//$output = system($command, $error);
 echo "\n\n";
 sleep(5);
 $line++;
