@@ -51,7 +51,7 @@ $line=0;
 while($line < $passes){
 $src = $path.'/'.$lines[$line].'/'; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line].'/';
-$output = system('rsync -avz --progress '.$src.' '.$dest, $error);
+$output = system('rsync -avz --progress \''.$src.'\' \''.$dest.'\'', $error);
 $line++;
 }
 cliPause();
