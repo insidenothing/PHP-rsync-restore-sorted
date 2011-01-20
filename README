@@ -11,3 +11,6 @@ Solution:
 3. sort method using ln "ln -t -l"
 4. catch result with php 
 5. start at the top of the list and rsync files / folders
+
+Breakthroughs:
+using output buffering in php cli gave a vast ui speed improvment.
