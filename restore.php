@@ -63,6 +63,7 @@ $type = "file";
 echo "$type: $command \n\n";
 $output = system($command, $error);
 echo "\n\n";
+sleep(5);
 $line++;
 }
 echo "Restore Complete \n";
