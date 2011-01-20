@@ -49,9 +49,19 @@ echo "ARE YOU SURE YOU WANT TO START THE RSYNC NOW? \n";
 cliPause();
 $line=0;
 while($line < $passes){
+if (is_dir($path.'/'.$lines[$line])){ 
 $src = $path.'/'.$lines[$line].'/'; 
 $dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line].'/';
-$output = system('rsync -avz --progress \''.$src.'\' \''.$dest.'\'', $error);
+$command = 'rsync -avz --progress \''.$src.'\' \''.$dest.'\'';
+$type = "folder";
+}else{
+$src = $path.'/'.$lines[$line]; 
+$dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line];
+$command = 'rsync -avz --progress \''.$src.'\' \''.$dest.'\'';
+$type = "file";
+}
+echo "$type: $command \n\n";
+//$output = system($command, $error);
 $line++;
 }
 cliPause();
