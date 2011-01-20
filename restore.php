@@ -43,14 +43,14 @@ echo "Loaded \n";
 $lines = explode("
 ", $buffer);
 $passes = count($lines);
-echo "Ready to process $passes in $path by $sort \n";
+echo "Ready to process $passes in $path by $sort to $remote at $server by $user \n";
 cliPause();
 echo "ARE YOU SURE YOU WANT TO START THE RSYNC NOW? \n";
 cliPause();
 $line=0;
 while($line < $passes){
-$src = $path.'/'.$lines[$line]; 
-$dest = $user.'@'.$server.':'.$remote;
+$src = $path.'/'.$lines[$line].'/'; 
+$dest = $user.'@'.$server.':'.$remote.'/'.$lines[$line].'/';
 echo "Command: rsync -avz --progress $src $dest \n";
 $line++;
 }
