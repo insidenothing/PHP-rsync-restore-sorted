@@ -5,13 +5,23 @@ $handle = fopen ("php://stdin","r");
 $null = fgets($handle);
 echo "\n";
 }
-echo "Path to sort and restore: ";
+echo "Sort type, first to transfer: [newest] ";
+$handle = fopen ("php://stdin","r");
+$line = fgets($handle);
+$sort = trim($line);
+if($sort == "newest"){
+$switch = "-t";
+}
+if(!$sort){
+$sort = "n/a";
+}
+echo "Path to restore: ";
 $handle = fopen ("php://stdin","r");
 $line = fgets($handle);
 $path = trim($line);
-echo "sorting $path...\n";
+echo "sorting $path by $sort first\n";
 ob_start();
-$last_line = system('ls '.$path.' -t', $retval);
+$last_line = system('ls '.$path.' '.$switch, $retval);
 $buffer = ob_get_clean();
 echo "Loaded \n";
 $lines = explode("
