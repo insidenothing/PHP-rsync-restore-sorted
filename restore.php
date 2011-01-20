@@ -1,34 +1,11 @@
-<?
-// placeholder
-
+<?php
+echo "Are you sure you want to do this?  Type 'yes' to continue: ";
+$handle = fopen ("php://stdin","r");
+$line = fgets($handle);
+if(trim($line) != 'yes'){
+    echo "ABORTING!\n";
+    exit;
+}
+echo "\n";
+echo "Thank you, continuing...\n";
 ?>
-
-
-<hr>
-Session Data:
-<table>
-<tr>
-<td>user</td>
-<td><input></td>
-</tr>
-<tr>
-<td>password</td>
-<td><input></td>
-</tr>
-<tr>
-<td>folder</td>
-<td><input></td>
-</tr>
-<tr>
-<td>sort order</td>
-<td><input></td>
-</tr>
-</table>
-<hr>
-Current Processing Order
-<table>
-<tr>
-<td>..</td>
-<td>..</td>
-</tr>
-</table>
