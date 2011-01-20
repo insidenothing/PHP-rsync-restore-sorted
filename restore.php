@@ -65,9 +65,9 @@ $command = 'rsync -avz --progress "'.$src.'" "'.prepSpaces($dest).'"';
 $type = "file";
 }
 echo "$type: $command \n\n";
-//$output = system($command, $error);
+sleep(1);
+$output = system($command, $error);
 echo "\n\n";
-sleep(5);
 $line++;
 }
 echo "Restore Complete \n";
