@@ -6,11 +6,11 @@ users need recent files restored first
 rsync does not offer sort. (and for good reasons, which I support) 
 
 Solution:
-1. disable time limit in script and run php cli
-2. use php's error_log to log restore for tail in other terminals
+1. run php cli
+2. direct output from rsync's progress to log for other terminal, echo commands in primary terminal
 3. sort method using ln "ln -t -l"
 4. catch result with php 
 5. start at the top of the list and rsync files / folders
 
 Breakthroughs:
-using output buffering in php cli gave a vast ui speed improvment.
+using output buffering in php cli gave a vast ui speed improvement.
