@@ -14,7 +14,7 @@ echo "Thank you, continuing...\n";
 echo "Are you sure you want to not do this?  Type 'no' to continue: ";
 $handle = fopen ("php://stdin","r");
 $line = fgets($handle);
-if(trim($line) != 'yes'){
+if(trim($line) != 'no'){
     echo "ABORTING!\n";
     exit;
 }
