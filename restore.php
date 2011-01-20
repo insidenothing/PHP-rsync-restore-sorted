@@ -22,6 +22,7 @@ cliPause();
 $line=0;
 while($line < $passes){
 echo "$lines[$line] \n";
+$line++;
 }
 cliPause();
 ?>
